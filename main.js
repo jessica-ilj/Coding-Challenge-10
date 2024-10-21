@@ -32,3 +32,25 @@ class Product {
   product.addSize("small", 0, true);     // Small: $50, In Stock
   product.addSize("medium", 10, true);   // Medium: $60, In Stock
   product.addSize("large", 20, false);   // Large: $70, Out of Stock
+
+
+// Get references to HTML elements
+const productPriceElement = document.getElementById("product-price");
+const sizeSelectorElement = document.getElementById("size-selector");
+const purchaseButtonElement = document.getElementById("purchase-button");
+
+// Update price and availability when a new size is selected
+sizeSelectorElement.addEventListener("change", (event) => {
+  const selectedSize = event.target.value;
+
+  // Update the price display
+  const updatedPrice = product.getPrice(selectedSize);
+  productPriceElement.textContent = `Price: $${updatedPrice.toFixed(2)}`;
+
+  // Handle availability status
+  if (product.isAvailable(selectedSize)) {
+    purchaseButtonElement.disabled = false; // Enable purchase button if in stock
+  } else {
+    purchaseButtonElement.disabled = true;  // Disable purchase button if out of stock
+  }
+});
