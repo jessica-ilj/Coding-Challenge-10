@@ -55,6 +55,10 @@ sizeSelectorElement.addEventListener("change", (event) => {
   }
 });
 
+// Handle the purchase button click
+purchaseButtonElement.addEventListener("click", () => {
+    const selectedSize = sizeSelectorElement.value;
+
 
   // Check if the selected size is available
   if (product.isAvailable(selectedSize)) {
