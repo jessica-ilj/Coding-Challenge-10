@@ -68,16 +68,17 @@ purchaseButtonElement.addEventListener("click", () => {
   }
 });
 
-// Event delegation for dynamically adding new products
+  
+  // Event delegation for dynamically adding new products
 document.addEventListener("submit", (event) => {
     event.preventDefault();
     
     if (event.target.matches(".new-product-form")) {
       const newProductName = document.getElementById("new-product-name").value;
-      const newProductPrice = parseFloat(document.getElementById("new-product-price").value);
+      const newProductPrice = document.getElementById("new-product-price").value; // No parseFloat, assuming valid input
   
-      if (newProductName && !isNaN(newProductPrice)) {
-        const newProduct = new Product(newProductName, newProductPrice);
+      if (newProductName && newProductPrice) {
+        const newProduct = new Product(newProductName, Number(newProductPrice)); // Using Number() for conversion
         alert(`${newProductName} has been added with a base price of $${newProductPrice}.`);
       } else {
         alert("Please enter valid product details.");
