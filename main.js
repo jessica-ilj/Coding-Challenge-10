@@ -54,3 +54,12 @@ sizeSelectorElement.addEventListener("change", (event) => {
     purchaseButtonElement.disabled = true;  // Disable purchase button if out of stock
   }
 });
+
+
+  // Check if the selected size is available
+  if (product.isAvailable(selectedSize)) {
+    alert("Purchase successful!");
+  } else {
+    alert("This product is out of stock and cannot be purchased.");
+  }
+});
