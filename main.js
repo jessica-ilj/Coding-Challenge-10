@@ -75,10 +75,10 @@ document.addEventListener("submit", (event) => {
     
     if (event.target.matches(".new-product-form")) {
       const newProductName = document.getElementById("new-product-name").value;
-      const newProductPrice = document.getElementById("new-product-price").value; // No parseFloat, assuming valid input
+      const newProductPrice = document.getElementById("new-product-price").value; // assuming valid input
   
       if (newProductName && newProductPrice) {
-        const newProduct = new Product(newProductName, Number(newProductPrice)); // Using Number() for conversion
+        const newProduct = new Product(newProductName, Number(newProductPrice)); // simple conversion
         alert(`${newProductName} has been added with a base price of $${newProductPrice}.`);
       } else {
         alert("Please enter valid product details.");
